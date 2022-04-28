@@ -1,0 +1,52 @@
+{
+  "root": "packages/itrulia",
+  "sourceRoot": "packages/itrulia/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/itrulia",
+        "main": "packages/itrulia/src/main.ts",
+        "tsConfig": "packages/itrulia/tsconfig.app.json",
+        "assets": ["packages/itrulia/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "packages/itrulia/src/environments/environment.ts",
+              "with": "packages/itrulia/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "itrulia:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/itrulia/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/itrulia"],
+      "options": {
+        "jestConfig": "packages/itrulia/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

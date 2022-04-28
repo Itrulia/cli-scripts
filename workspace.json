@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "blame-port": "packages/blame-port",
+    "itrulia": "packages/itrulia",
+    "kill-port": "packages/kill-port"
+  }
+}
